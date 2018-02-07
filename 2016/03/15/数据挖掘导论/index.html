@@ -21,23 +21,20 @@
   
   
   
-  <meta name="description" content="四中主要的数据挖掘任务：  聚类分析 预测分析 关联分析 异常检测  第二章：数据数据集的特性：  维度：数据预处理主要目的就是降低维度（防止维灾难）维归约 稀疏度 分辨率：主要是时间刻度  数据挖掘着眼于两个方面  对数据质量问题进行检测和纠正 研究可以容忍低质量数据的算法  数据预处理 聚集：将两个或多个对象合并成一个对象——对象或属性群之间的行为通常比单个对象更稳定 抽样：注意选定合适的样本">
+  <meta name="description" content="本文为《数据挖掘导论》笔记，目前仅有前三章内容，不定期持续更新中…">
 <meta name="keywords" content="数据挖掘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据挖掘导论">
 <meta property="og:url" content="https://huianyi.github.io/2016/03/15/数据挖掘导论/index.html">
 <meta property="og:site_name" content="KpLearner">
-<meta property="og:description" content="四中主要的数据挖掘任务：  聚类分析 预测分析 关联分析 异常检测  第二章：数据数据集的特性：  维度：数据预处理主要目的就是降低维度（防止维灾难）维归约 稀疏度 分辨率：主要是时间刻度  数据挖掘着眼于两个方面  对数据质量问题进行检测和纠正 研究可以容忍低质量数据的算法  数据预处理 聚集：将两个或多个对象合并成一个对象——对象或属性群之间的行为通常比单个对象更稳定 抽样：注意选定合适的样本">
+<meta property="og:description" content="本文为《数据挖掘导论》笔记，目前仅有前三章内容，不定期持续更新中…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/QQ%E6%88%AA%E5%9B%BE20160404112526.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/%E7%AE%80%E5%8D%95%E5%B1%9E%E6%80%A7%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%92%8C%E7%9B%B8%E5%BC%82%E5%BA%A6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/%E5%BC%82%E7%A7%8D%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%BA%A6.png">
-<meta property="og:updated_time" content="2018-02-07T05:51:47.458Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg">
+<meta property="og:updated_time" content="2018-02-07T06:27:37.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘导论">
-<meta name="twitter:description" content="四中主要的数据挖掘任务：  聚类分析 预测分析 关联分析 异常检测  第二章：数据数据集的特性：  维度：数据预处理主要目的就是降低维度（防止维灾难）维归约 稀疏度 分辨率：主要是时间刻度  数据挖掘着眼于两个方面  对数据质量问题进行检测和纠正 研究可以容忍低质量数据的算法  数据预处理 聚集：将两个或多个对象合并成一个对象——对象或属性群之间的行为通常比单个对象更稳定 抽样：注意选定合适的样本">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/QQ%E6%88%AA%E5%9B%BE20160404112526.png">
+<meta name="twitter:description" content="本文为《数据挖掘导论》笔记，目前仅有前三章内容，不定期持续更新中…">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg">
   
     <link rel="alternate" href="/atom.xml" title="KpLearner" type="application/atom+xml">
   
@@ -172,6 +169,16 @@ var themeMenus = {};
           <section id="main" style="float:none;"><article id="post-数据挖掘导论" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg" rel="gallery_cjdco0cem000180gtphg9hy44">
+        <img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
     
       <header class="article-header">
         
@@ -197,7 +204,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>四中主要的数据挖掘任务：</p>
+        <p>本文为《数据挖掘导论》笔记，目前仅有前三章内容，不定期持续更新中…<br><a id="more"></a><br>四中主要的数据挖掘任务：</p>
 <ol>
 <li>聚类分析</li>
 <li>预测分析</li>
@@ -479,6 +486,21 @@ var themeMenus = {};
   </div>
 
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

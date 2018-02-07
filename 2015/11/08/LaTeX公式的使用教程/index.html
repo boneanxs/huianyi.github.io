@@ -21,18 +21,18 @@
   
   
   
-  <meta name="description" content="本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。 公式 $$表示独自成为一个段落 $表示为行间  希腊字母    名称 大写 Tex 小写 Tex     alpha A A α \alpha   beta B B β \beta   gamm">
+  <meta name="description" content="转载自翻译文章，由于年代久远，忘记了原地址了，如果有人知道，还望通知： 本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。">
 <meta name="keywords" content="教程,LaTex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LaTeX公式的使用教程">
 <meta property="og:url" content="https://huianyi.github.io/2015/11/08/LaTeX公式的使用教程/index.html">
 <meta property="og:site_name" content="KpLearner">
-<meta property="og:description" content="本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。 公式 $$表示独自成为一个段落 $表示为行间  希腊字母    名称 大写 Tex 小写 Tex     alpha A A α \alpha   beta B B β \beta   gamm">
+<meta property="og:description" content="转载自翻译文章，由于年代久远，忘记了原地址了，如果有人知道，还望通知： 本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-07T05:51:48.898Z">
+<meta property="og:updated_time" content="2018-02-07T06:34:59.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaTeX公式的使用教程">
-<meta name="twitter:description" content="本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。 公式 $$表示独自成为一个段落 $表示为行间  希腊字母    名称 大写 Tex 小写 Tex     alpha A A α \alpha   beta B B β \beta   gamm">
+<meta name="twitter:description" content="转载自翻译文章，由于年代久远，忘记了原地址了，如果有人知道，还望通知： 本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。">
   
     <link rel="alternate" href="/atom.xml" title="KpLearner" type="application/atom+xml">
   
@@ -192,7 +192,8 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。</p>
+        <p>转载自翻译文章，由于年代久远，忘记了原地址了，如果有人知道，还望通知：</p>
+<p>本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。<br><a id="more"></a></p>
 <h1 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h1><ul>
 <li>$$表示独自成为一个段落</li>
 <li>$表示为行间</li>
@@ -641,6 +642,21 @@ var themeMenus = {};
   </div>
 
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

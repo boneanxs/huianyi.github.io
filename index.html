@@ -185,108 +185,18 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>四中主要的数据挖掘任务：</p>
-<ol>
-<li>聚类分析</li>
-<li>预测分析</li>
-<li>关联分析</li>
-<li>异常检测</li>
-</ol>
-<h1 id="第二章：数据"><a href="#第二章：数据" class="headerlink" title="第二章：数据"></a>第二章：数据</h1><p>数据集的特性：</p>
-<ul>
-<li>维度：数据预处理主要目的就是降低维度（防止维灾难）维归约</li>
-<li>稀疏度</li>
-<li>分辨率：主要是时间刻度</li>
-</ul>
-<p>数据挖掘着眼于两个方面</p>
-<ol>
-<li>对数据质量问题进行检测和纠正</li>
-<li>研究可以容忍低质量数据的算法</li>
-</ol>
-<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ol>
-<li>聚集：将两个或多个对象合并成一个对象——对象或属性群之间的行为通常比单个对象更稳定</li>
-<li>抽样：注意选定合适的样本容量（可以通过渐进抽样的方法），以及由于属性之间的关系选择分层抽样，使用聚类等方法</li>
-<li>维归约：减少属性值，从而降低数据挖掘对内存和时间复杂度上的需求：维归约的线性代数技术——主成分分析/奇异值分解</li>
-<li>特征子集选择：嵌入/过滤/包装方法<br>特征子集选择体系结构如下图所示：<br> <img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/QQ%E6%88%AA%E5%9B%BE20160404112526.png" alt="特征子集选择体系结构图"></li>
-<li>特征创建<ul>
-<li>特征提取</li>
-<li>映射数据到新的空间：小波变换、傅里叶变换</li>
-<li>特征构造</li>
-</ul>
-</li>
-<li>离散化和二元化：二元化常用的方法（P49），非监督离散化——等宽、等频率、等深；监督离散化——利用熵来进行判断；具有过多值的分类属性——可以采用离散化的方法，也可以根据数据的特征进行大类的划并（如工程学系、社会科学系）</li>
-<li>变量变换：简单函数变化；规范化和标准化（利用中值取代均值，绝对标准差取代标准差</li>
-</ol>
-<h2 id="相似性和相异性的度量"><a href="#相似性和相异性的度量" class="headerlink" title="相似性和相异性的度量"></a>相似性和相异性的度量</h2><ol>
-<li>相似度常取值为0到1，而相异度则有时在0到1，有时会大于1</li>
-</ol>
-<h3 id="简单属性的相似性和相异性测量"><a href="#简单属性的相似性和相异性测量" class="headerlink" title="简单属性的相似性和相异性测量"></a>简单属性的相似性和相异性测量</h3><ol>
-<li>标称属性只携带了对象的相异性信息</li>
-<li>具有单个标称属性的对象之间的相异性完全可以根据标称属性判断</li>
-<li>对于具有单个序数对象的属性，就要对序数进行量化，常见的定义序数属性邻近度的标准方法是1,2,3,4…</li>
-<li>区间或比率属性相异度测量的方法是属性值相减的绝对值，一般说来，区间或比率的相似度常转化为相异度进行测量</li>
-</ol>
-<p>如图：<br><img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/%E7%AE%80%E5%8D%95%E5%B1%9E%E6%80%A7%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%92%8C%E7%9B%B8%E5%BC%82%E5%BA%A6.png" alt="简单属性的相似度和相异度测量"></p>
-<h3 id="数据对象之间的相似度和相异度"><a href="#数据对象之间的相似度和相异度" class="headerlink" title="数据对象之间的相似度和相异度"></a>数据对象之间的相似度和相异度</h3><ol>
-<li>欧几里得距离为 $d(x,y)=\sqrt{\sum\limits_{k=1}^n(x_k-y_k)^2}$,这个式子可以由下式推广：</li>
-</ol>
-<script type="math/tex; mode=display">d(x,y)=\left(\sum_{k=1}^n|x_k-y_k|^r\right)^{\frac1r}\text(闵可夫斯基距离)</script><p>注意：</p>
-<ul>
-<li>$r$是参数，不要和属性个数进行混淆</li>
-<li>当$r\rightarrow\infty$时，可以得出距离L的最大值$L_\infty$</li>
-</ul>
-<script type="math/tex; mode=display">L_{max}=\lim_{r\rightarrow\infty}\left(\sum_{k=1}^n|x_k-y_k|^r\right)^{\frac1r}</script><ul>
-<li>距离具有如下属性：<ol>
-<li>非负性</li>
-<li>对称性</li>
-<li>三角不等式性：对于$x、y、z$,有$d(x,z)\leq d(x,y)+d(y,z)$<br>满足上边属性的称为<strong>度量</strong></li>
-</ol>
-</li>
-</ul>
-<ol>
-<li>遇到有些非度量的，就无法使用距离公式，一般要根据具体情境考虑，如集合差、时间</li>
-<li><strong>数据之间的相似度见P58</strong></li>
-</ol>
-<h2 id="邻近性度量的例子"><a href="#邻近性度量的例子" class="headerlink" title="邻近性度量的例子"></a>邻近性度量的例子</h2><ol>
-<li>二元数据的相似性度量</li>
-</ol>
-<ul>
-<li>简单匹配系数(SMC)<script type="math/tex; mode=display">f_{00}表示x与y属性都为0的个数；
-  f_{01}表示x为0y为1的个数；
-  f_{10}、f_{11}依次同上</script>则有：<script type="math/tex; mode=display">SMC=\frac {f_{00}+f_{11}}{f_{00}+f_{11}+f_{01}+f_{10}}</script></li>
-<li>Jaccard系数，排除了SMC方法0过多时导致所有属性都是相似的问题：<script type="math/tex; mode=display">J=\frac {f_{11}}{f_{10}+f_{01}+f_{11}}</script></li>
-</ul>
-<ol>
-<li>非二元属性的相似性度量</li>
-</ol>
-<ul>
-<li><p>余弦相似度不仅忽略了0过多的问题，而且考虑了非二元属性，常用语文档相似度分析，如果x和y表示两个文档属性，则有：</p>
-<script type="math/tex; mode=display">\cos(x,y)=\frac {x \cdot y}{||x||||y||}</script><p>其中$||x||=\sqrt{\sum\limits<em>{k=1}^nx_k^2}$、$x\cdot y=\sum</em>{k=1}^nx_ky_k$<br><img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6.png" alt="余弦相似度"></p>
-</li>
-<li><p>广义Jaccard系数</p>
-<script type="math/tex; mode=display">EJ(x,y)=\frac {x\cdot y}{||x||^2+||y||^2-x\cdot y}</script></li>
-</ul>
-<ol>
-<li>相关性：两个具有二元属性或连续变量的数据对象之间的相关性就是对象属性之间线性联系的度量，更准确的说就是皮尔森相关系数，如下：<script type="math/tex; mode=display">corr(x,y)=\frac {S_{xy}}{S_xS_y}</script><script type="math/tex; mode=display">S_{xy}=\frac 1{n-1}\sum_{k=1}^n(x_k-\bar x)(y_k-\bar y)</script><script type="math/tex; mode=display">S_x=\sqrt{\frac 1{n-1}\sum_{k=1}^n(x_k-\bar x)^2}</script>$S_y$同理</li>
-<li>Bregman散度</li>
-</ol>
-<h2 id="邻近度计算的相关问题"><a href="#邻近度计算的相关问题" class="headerlink" title="邻近度计算的相关问题"></a>邻近度计算的相关问题</h2><ol>
-<li>属性值域不同或者之间有相关性<br>Mahalanobis距离：常用来计算有相关性的属性之间的距离：<script type="math/tex; mode=display">Mahalanobis(x,y)=(x-y)\sum\nolimits^{-1}(x-y)^T</script>其中$\sum\nolimits^{-1}$表示向量x和y的协方差矩阵的逆，协方差矩阵指的是第$ij$个元素满足$x_i$和$y_j$属性的协方差<br>值域不同时通过标准化使用欧几里得距离就好</li>
-<li>数据对象之间属性的数据类型不相同时：<br><img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/%E5%BC%82%E7%A7%8D%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BC%BC%E5%BA%A6.png" alt="异种对象相似度"></li>
-<li>使用权值<script type="math/tex; mode=display">similarity(x,y)=\frac {\sum_{k=1}^nw_k\delta_ks_k(x,y)}{\sum_{k=1}^n\delta_k}</script><script type="math/tex; mode=display">d(x,y)=\left(\sum_{k=1}^nw_k\left|x-y\right|^r\right)^\frac 1r</script>其中$w_k$的权值和为1。</li>
-</ol>
-<h2 id="选取度量时的常用方法"><a href="#选取度量时的常用方法" class="headerlink" title="选取度量时的常用方法"></a>选取度量时的常用方法</h2><ol>
-<li>对于稠密、连续的数据通常使用距离</li>
-<li>稀疏数据，常常进行忽略0-0这些属性的方法，这反映了如下事实，相似度通常依赖于他们所共有的性质项目，而不是依赖于他们所缺失的项目</li>
-<li>考虑数据的时间延迟，为了得到合适的数据相似度度量，常常进行数据的基本处理</li>
-</ol>
-<h1 id="第三章：探索数据"><a href="#第三章：探索数据" class="headerlink" title="第三章：探索数据"></a>第三章：探索数据</h1><blockquote>
-<p>数据探索，对数据进行初步研究，以便更好地理解它的特殊性质。数据探索有助于选择合适的数据预处理和数据分析技术。他甚至可以处理一些通常有数据挖掘解决的问题，例如，有时可以通过对数据直接检查发现模式，此外，数据探索中使用的某些技术可以用于理解和解释数据挖掘结果。</p>
-</blockquote>
-<ol>
-<li>截断均值：指定0~100之间的百分位数p，丢弃高端和低端$\frac p2$%的数据，然后再取均值</li>
-</ol>
-<script type="math/tex; mode=display">Rt=\frac{invest\_total}{income\times market\_in\ age}</script>
+        
+          <div class="entry-thumbnail">
+            <a href="/2016/03/15/数据挖掘导论/"><img width="250" height="175" src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          本文为《数据挖掘导论》笔记，目前仅有前三章内容，不定期持续更新中…
+
+        
+          <p class="article-more-link">
+            <a href="/2016/03/15/数据挖掘导论/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -333,266 +243,19 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。</p>
-<h1 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h1><ul>
-<li>$$表示独自成为一个段落</li>
-<li>$表示为行间</li>
-</ul>
-<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">大写</th>
-<th style="text-align:center">Tex</th>
-<th style="text-align:center">小写</th>
-<th style="text-align:center">Tex</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">alpha</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A</td>
-<td style="text-align:center">α</td>
-<td style="text-align:center">\alpha</td>
-</tr>
-<tr>
-<td style="text-align:center">beta</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B</td>
-<td style="text-align:center">β</td>
-<td style="text-align:center">\beta</td>
-</tr>
-<tr>
-<td style="text-align:center">gamma</td>
-<td style="text-align:center">Γ</td>
-<td style="text-align:center">\Gamma</td>
-<td style="text-align:center">γ</td>
-<td style="text-align:center">\gamma</td>
-</tr>
-<tr>
-<td style="text-align:center">delta</td>
-<td style="text-align:center">Δ</td>
-<td style="text-align:center">\Delta</td>
-<td style="text-align:center">δ</td>
-<td style="text-align:center">\delta</td>
-</tr>
-<tr>
-<td style="text-align:center">epsilon</td>
-<td style="text-align:center">E</td>
-<td style="text-align:center">E</td>
-<td style="text-align:center">ϵ</td>
-<td style="text-align:center">\epsilon</td>
-</tr>
-<tr>
-<td style="text-align:center">zeta</td>
-<td style="text-align:center">Z</td>
-<td style="text-align:center">Z</td>
-<td style="text-align:center">ζ</td>
-<td style="text-align:center">\zeta</td>
-</tr>
-<tr>
-<td style="text-align:center">eta</td>
-<td style="text-align:center">H</td>
-<td style="text-align:center">H</td>
-<td style="text-align:center">η</td>
-<td style="text-align:center">\eta</td>
-</tr>
-<tr>
-<td style="text-align:center">theta</td>
-<td style="text-align:center">Θ</td>
-<td style="text-align:center">\Theta</td>
-<td style="text-align:center">θ</td>
-<td style="text-align:center">\theta</td>
-</tr>
-<tr>
-<td style="text-align:center">iota</td>
-<td style="text-align:center">I</td>
-<td style="text-align:center">I</td>
-<td style="text-align:center">ι</td>
-<td style="text-align:center">\iota</td>
-</tr>
-<tr>
-<td style="text-align:center">kappa</td>
-<td style="text-align:center">K</td>
-<td style="text-align:center">K</td>
-<td style="text-align:center">κ</td>
-<td style="text-align:center">\kappa</td>
-</tr>
-<tr>
-<td style="text-align:center">lambda</td>
-<td style="text-align:center">Λ</td>
-<td style="text-align:center">\Lambda</td>
-<td style="text-align:center">λ</td>
-<td style="text-align:center">\lambda</td>
-</tr>
-<tr>
-<td style="text-align:center">mu</td>
-<td style="text-align:center">M</td>
-<td style="text-align:center">M</td>
-<td style="text-align:center">μ</td>
-<td style="text-align:center">\mu</td>
-</tr>
-<tr>
-<td style="text-align:center">nu</td>
-<td style="text-align:center">N</td>
-<td style="text-align:center">N</td>
-<td style="text-align:center">ν</td>
-<td style="text-align:center">\nu</td>
-</tr>
-<tr>
-<td style="text-align:center">xi</td>
-<td style="text-align:center">Ξ</td>
-<td style="text-align:center">\Xi</td>
-<td style="text-align:center">ξ</td>
-<td style="text-align:center">\xi</td>
-</tr>
-<tr>
-<td style="text-align:center">omicron</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">ο</td>
-<td style="text-align:center">\omicron</td>
-</tr>
-<tr>
-<td style="text-align:center">pi</td>
-<td style="text-align:center">Π</td>
-<td style="text-align:center">\Pi</td>
-<td style="text-align:center">π</td>
-<td style="text-align:center">\pi</td>
-</tr>
-<tr>
-<td style="text-align:center">rho</td>
-<td style="text-align:center">P</td>
-<td style="text-align:center">P</td>
-<td style="text-align:center">ρ</td>
-<td style="text-align:center">\rho</td>
-</tr>
-<tr>
-<td style="text-align:center">sigma</td>
-<td style="text-align:center">Σ</td>
-<td style="text-align:center">\Sigma</td>
-<td style="text-align:center">σ</td>
-<td style="text-align:center">\sigma</td>
-</tr>
-<tr>
-<td style="text-align:center">tau</td>
-<td style="text-align:center">T</td>
-<td style="text-align:center">T</td>
-<td style="text-align:center">τ</td>
-<td style="text-align:center">\tau</td>
-</tr>
-<tr>
-<td style="text-align:center">upsilon</td>
-<td style="text-align:center">Υ</td>
-<td style="text-align:center">\Upsilon</td>
-<td style="text-align:center">υ</td>
-<td style="text-align:center">\upsilon</td>
-</tr>
-<tr>
-<td style="text-align:center">phi</td>
-<td style="text-align:center">Φ</td>
-<td style="text-align:center">\Phi</td>
-<td style="text-align:center">ϕ</td>
-<td style="text-align:center">\phi</td>
-</tr>
-<tr>
-<td style="text-align:center">chi</td>
-<td style="text-align:center">X</td>
-<td style="text-align:center">X</td>
-<td style="text-align:center">χ</td>
-<td style="text-align:center">\chi</td>
-</tr>
-<tr>
-<td style="text-align:center">psi</td>
-<td style="text-align:center">Ψ</td>
-<td style="text-align:center">\Psi</td>
-<td style="text-align:center">ψ</td>
-<td style="text-align:center">\psi</td>
-</tr>
-<tr>
-<td style="text-align:center">omega</td>
-<td style="text-align:center">Ω</td>
-<td style="text-align:center">\Omega</td>
-<td style="text-align:center">ω</td>
-<td style="text-align:center">\omega</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h3 id="上标和下标"><a href="#上标和下标" class="headerlink" title="上标和下标"></a>上标和下标</h3><ol>
-<li><code>_</code>表下标</li>
-<li><code>^</code>表示上标</li>
-<li>块间使用<code>{}</code></li>
-<li>小括号和中括号使用原始的就好</li>
-<li>注意使用<code>\{</code>表示大括号</li>
-<li>上取整：使用<code>\lceil</code> 和 <code>\rceil</code> 表示 如$\lceil x \rceil$</li>
-<li>下取整：使用<code>\rfloor</code> 和<code>\lfloor</code> 表示 如$\lfloor x \rfloor$<strong>注意：</strong> 中间要有空格</li>
-<li>不可见括号：使用.表示<blockquote>
-<p>原始符号并不会随着公式大小缩放，因此要使用<code>\left(...\right)</code>表示<br>比如:</p>
-<script type="math/tex; mode=display">\lbrace\sum_{i=0}^n i^2 =                >\frac{(n^2+n)(2n+1)}{6}\rbrace</script><p>就可以改为：</p>
-<script type="math/tex; mode=display">\left \lbrace \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\right\rbrace</script></blockquote>
-</li>
-</ol>
-<h3 id="求和与积分"><a href="#求和与积分" class="headerlink" title="求和与积分"></a>求和与积分</h3><p><code>\sum</code>用来表示求和符号，其下标表示求和下限，上标表示上限。如:$\sum_1^n$。</p>
-<p><code>\int</code>用来表示积分符号，同样地，其上下标表示积分的上下限。如，$\int_1^\infty$</p>
-<p>与此类似的符号还有，<code>\prod</code>：∏，<code>\bigcup</code>:⋃，<code>\bigcap</code>：⋂，<code>\iiint</code>:$\iiint$</p>
-<h3 id="分式与根式"><a href="#分式与根式" class="headerlink" title="分式与根式"></a>分式与根式</h3><p>分式可以用<code>\frac</code>表示，比如$\frac ab$,根式使用<code>\sqrt[数字]</code>表示，比如：$\sqrt\frac ab$</p>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><ol>
-<li>使用\mathbb或\Bbb显示黑板粗体字，此字体经常用来表示代表实数、整数、有理数、复数的大写字母。如：$\mathbb CHNQRZ$、$\Bbb CHNQRZ$。</li>
-<li>使用\mathbf显示黑体字，如： $\mathbf anbcedfghig$。</li>
-<li>使用\mathtt显示打印机字体，如： $\mathtt andfjdsaf$。</li>
-<li>使用\mathrm显示罗马字体，如，$\mathrm wxyz$。</li>
-<li>使用\mathscr显示手写体，如，$\mathscr dfjalsfa$。</li>
-<li>使用\mathfrak显示Fraktur字母（一种德国字体），如: $\mathfrak dfasfasf$</li>
-</ol>
-<h3 id="特殊符号和函数"><a href="#特殊符号和函数" class="headerlink" title="特殊符号和函数"></a>特殊符号和函数</h3><ol>
-<li>常见的三角函数，求极限符号可直接使用<code>\+缩写</code>即可。如:$\sin x$ $ \lim_{1\to\infty}$</li>
-<li>比较运算符<code>\lt</code> <code>\gt</code> <code>\le</code> <code>ge</code> <code>\neq</code>,如: $a\lt b$ $a\gt c$ $a \le b$ $a \ge c$ $a\neq b$,若需要不等号，则只需加上<code>\not</code>即可，如： $\not\lt$</li>
-<li><code>\times</code> <code>\div</code> <code>\pm</code> <code>\mp</code>表示：$\times$ $\div$ $\pm$ $\mp$，<code>\cdot</code>表示居中的点，<code>x \cdot y</code> :$x \cdot y$。</li>
-<li>集合关系与运算：<code>\cup</code> <code>\cap</code> <code>\setminus</code> <code>\subset</code> <code>\subseteq</code> <code>\subsetneq</code> <code>\supset</code> <code>\in</code> <code>\notin</code> <code>\emptyset</code> <code>\varnothing</code> ：$\cup$ $\cap$ $\setminus$ $\subset$ $\subseteq$ $\subsetneq$ $\supset$ $\in$ $\notin$ $\emptyset$ $\varnothing$</li>
-<li>表示排列使用<code>{n+1 \choose 2k}</code> 或 <code>\binom{n+1}{2k}</code>，$\binom{n+1}{2k}$</li>
-<li>箭头：<code>\to</code> <code>\rightarrow</code> <code>\leftarrow</code> <code>\Rightarrow</code> <code>\Leftarrow</code> <code>\mapsto</code> : $\to\rightarrow\leftarrow\Rightarrow\Leftarrow\mapsto$</li>
-<li>逻辑运算符：<code>\land</code> <code>\lor</code> <code>\lnot</code> <code>\forall</code> <code>\exists</code> <code>\top</code> <code>\bot</code> <code>\vdash</code> <code>\vDash</code> $\land \lor \lnot \forall \exists \top \bot \vdash \vDash$</li>
-<li><code>\star</code> <code>\ast</code> <code>\oplus</code> <code>\circ</code> <code>\bullet</code> :$\star \ast \oplus \circ \bullet $</li>
-<li><code>\approx</code> <code>\sim</code> <code>\cong</code> <code>\equiv</code> <code>\prec</code>:$\approx \sim \cong \equiv \prec$</li>
-<li><code>\infty</code> <code>\aleph_0</code>: $\infty \aleph_0$</li>
-<li><code>\nabla</code> <code>\partial</code>: $ \nabla \partial$</li>
-<li><code>\Im</code> <code>\Re</code>: $\Im \Re$</li>
-<li>模运算 <code>\pmod</code>: $a\equiv b\pmod n$</li>
-<li><code>\ldots</code>与<code>\cdots</code>，其区别是dots的位置不同，<code>ldots</code>位置稍低，<code>cdots</code>位置居中:$a+b+c+\cdots+z$,$a,b,c,d,\ldots,z$</li>
-<li>一些希腊字母具有变体形式，如 <code>\epsilon</code> <code>\varepsilon</code>:$\epsilon$ $\varepsilon$</li>
-</ol>
-<h3 id="空间"><a href="#空间" class="headerlink" title="空间"></a>空间</h3><p>通常MathJax通过内部策略自己管理公式内部的空间，因此ab与a    b（.表示空格）都会显示为ab。可以通过在ab间加入<code>\</code>,增加些许间隙，<code>\;</code>增加较宽的间隙，<code>\quad</code> 与 <code>\qquad</code> 会增加更大的间隙，如，$a\ b$(注意<code>\</code>后边跟上字母也得加空格) $a\; b$ $a\quad b$。</p>
-<h3 id="顶部符号"><a href="#顶部符号" class="headerlink" title="顶部符号"></a>顶部符号</h3><p>对于单字符，<code>\hat</code>:$\hat b$,多字符<code>\widehat</code>:$\widehat {ab}$,<br>类似的还有:<code>\overline</code>,<code>\vec</code>,<code>\overrightarrow</code>,<code>\dot \ddot</code>:$\overline {abc}\ \vec {av}$(只能输两个)$\overrightarrow {adc}\ \dot d$(只能输一个) $\ddot a$(只能输一个)</p>
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>基础部分就是这些。需要注意的是一些MathJax使用的特殊字符，可以使用\转义为原来的含义。如<code>\$</code>表示$，<code>\_</code>表示下划线.</p>
-<hr>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>使用<code>$$\begin{array}{列样式}…\end{array}$$</code>这样的形式来创建表格，列样式可以是<code>c</code>表示居中，<code>l</code>左，<code>r</code>右对齐，还可以使用<code>|</code>表示一条竖线。表格中 各行使用<code>\\</code>分隔，各列使用<code>&amp;</code>分隔。使用<code>\hline</code>在本行前加入一条直线。 例如，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \begin&#123;array&#125;&#123;c|lcr&#125; n &amp; \text&#123;Left&#125; &amp; \text&#123;Center&#125; &amp; \text&#123;Right&#125; \\ \hline 1 &amp; 0.24 &amp; 1 &amp; 125 \\ 2 &amp; -1 &amp; 189 &amp; -8 \\ 3 &amp; -20 &amp; 2000 &amp; 1+10i \\ \end&#123;array&#125; $$</span><br></pre></td></tr></table></figure>
-<p>结果:</p>
-<script type="math/tex; mode=display">\begin{array}{c|lcr} n & \text{Left} & \text{Center} & \text{Right} \\1 & 0.24 & 1 & 125 \\ 2 & -1 & 189 & -8 \\ 3 & -20 & 2000 & 1+10i \\ \end{array}</script><p>更复杂的有：</p>
-<script type="math/tex; mode=display">\begin{array}{c}\begin{array}{cc}\begin{array}{c|cccc}\text{min} & 0 & 1 & 2 & 3\\\hline 0 & 0 & 0 & 0 & 0\\1 & 0 & 1 & 1 & 1\\2 & 0 & 1 & 2 & 2\\3 & 0 & 1 & 2 & 3\end{array}&\begin{array}{c|cccc}\text{max}&0&1&2&3\\\hline0 & 0 & 1 & 2 & 3\\1 & 1 & 1 & 2 & 3\\2 & 2 & 2 & 2 & 3\\3 & 3 & 3 & 3 & 3\end{array}\end{array}\\\begin{array}{c|cccc}\Delta&0&1&2&3\\\hline0 & 0 & 1 & 2 & 3\\1 & 1 & 0 & 1 & 2\\2 & 2 & 1 & 0 & 1\\3 & 3 & 2 & 1 & 0\end{array}\end{array}</script><h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>使用<code>$$\begin{matrix}…\end{matrix}$$</code>这样的形式来表示矩阵，在\begin与\end之间加入矩阵中的元素即可。矩阵的行之间使用<code>\\</code>分隔，列之间使用<code>&amp;</code>分隔。</p>
-<p>例如 <code>$$ \begin{matrix} 1 &amp; x &amp; x^2 \\ 1 &amp; y &amp; y^2 \\ 1 &amp; z &amp; z^2 \\ \end{matrix} $$</code> 结果：</p>
-<script type="math/tex; mode=display">\begin{matrix} 1 & x & x^2 \\ 1 & y & y^2 \\ 1 & z & z^2 \\ \end{matrix}</script><h3 id="加括号"><a href="#加括号" class="headerlink" title="加括号"></a>加括号</h3><p>如果要对矩阵加括号，可以像上文中提到的一样，使用<code>\left</code>与<code>\right</code>配合表示括号符号。也可以使用特殊的<code>matrix</code>。即替换<code>\begin{matrix}…\end{matrix}</code>中的<code>matrix</code>为<code>pmatrix</code>，<code>bmatrix</code>，<code>Bmatrix</code>，<code>vmatrix</code> , <code>Vmatrix</code>.<br>如： pmatrix:$\begin{pmatrix} 1 &amp; x &amp; x^2 \ 1 &amp; y &amp; y^2 \ 1 &amp; z &amp; z^2 \ \end{pmatrix}$,bmatrix:$\begin{bmatrix} 1 &amp; x &amp; x^2 \ 1 &amp; y &amp; y^2 \ 1 &amp; z &amp; z^2 \ \end{bmatrix}$,Bmatrix:$\begin{Bmatrix} 1 &amp; x &amp; x^2 \ 1 &amp; y &amp; y^2 \ 1 &amp; z &amp; z^2 \ \end{Bmatrix}$,vmatrix：vmatrix$\begin{vmatrix} 1 &amp; x &amp; x^2 \ 1 &amp; y &amp; y^2 \ 1 &amp; z &amp; z^2 \ \end{vmatrix}$,Vmatrix：$\begin{Vmatrix}1&amp;2\3&amp;4\ \end{Vmatrix}$(<strong>这里有问题，需验证</strong>)</p>
-<h3 id="省略元素"><a href="#省略元素" class="headerlink" title="省略元素"></a>省略元素</h3><p>可以使用<code>\cdots</code> $\cdots$ <code>\ddots</code> $\ddots$ <code>\vdots</code> $\vdots$ 来省略矩阵中的元素，如</p>
-<script type="math/tex; mode=display">\begin{pmatrix} 1 & a_1 & a_1^2 & \cdots & a_1^n \\1 & a_2 & a_2^2 & \cdots & a_2^n \\    \vdots  & \vdots& \vdots & \ddots & \vdots \\     1 & a_m & a_m^2 & \cdots & a_m^n\end{pmatrix}</script><h3 id="增广矩阵"><a href="#增广矩阵" class="headerlink" title="增广矩阵"></a>增广矩阵</h3><p>增广矩阵需要使用前面的array来实现，如 <code>$$ \left[ \begin{array}{cc|c} 1&amp;2&amp;3\\ 4&amp;5&amp;6 \end{array} \right] $$</code> 结果</p>
-<script type="math/tex; mode=display">\left[ \begin{array}{cc|c} 1&2&3\\ 4&5&6 \end{array} \right]</script><h2 id="对齐的公式"><a href="#对齐的公式" class="headerlink" title="对齐的公式"></a>对齐的公式</h2><p>有时候可能需要一系列的公式中等号对齐，如：</p>
-<script type="math/tex; mode=display">\begin{align}\sqrt{37}&=\sqrt{\frac{73^2-1}{12^2}}\\&=\sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  & = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\ & = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  & \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)\end{align}</script><p>公式如下：</p>
-<pre><code>\begin{align}\sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\
-&amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\
-&amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\
-&amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\
-&amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)
-\end{align}
-</code></pre><h2 id="分类表达式"><a href="#分类表达式" class="headerlink" title="分类表达式"></a>分类表达式</h2><p>定义函数的时候经常需要分情况给出表达式，可使用<code>\begin{cases}…\end{cases}</code>。其中，使用<code>\</code>来分类，使用<code>&amp;</code>指示需要对齐的位置。如:</p>
-<pre><code>f(n) =\begin{cases}n/2,  &amp; \text{if $n$ is even} \\3n+1, &amp; \text{if $n$ is odd}  \\\end{cases}
-</code></pre><script type="math/tex; mode=display">f(n)=\begin{cases}n/2,&\text{if $n$ is even} \\3n+1, & \text{if $n$ is odd}\\\end{cases}</script><p>括号移到右边(用array实现)</p>
-<pre><code>\left.\begin{array}{l}\text{if $n$ is even:}&amp;n/2\\\text{if $n$is odd:}&amp;3n+1\end{array}\right\}=f(n)
-</code></pre><script type="math/tex; mode=display">\left.\begin{array}{l}\text{if $n$ is even:}&n/2\\\text{if $n$ is odd:}&3n+1\end{array}\right\}=f(n)</script><p>最后，如果想分类之间的垂直间隔变大，可以使用<code>\[2ex]</code>代替<code>\</code>来分隔不同的情况。(3ex,4ex也可以用，1ex相当于原始距离）</p>
-<p>注意事项详见：<a href="http://mlworks.cn/posts/introduction-to-mathjax-and-latex-expression/" target="_blank" rel="noopener">markdown教程</a></p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            转载自翻译文章，由于年代久远，忘记了原地址了，如果有人知道，还望通知：
+本文从math.stackexchange.com上名为MathJax basic tutorial and quick reference的问题翻译而来，并有所改动。主要讲述了如何使用Latex语法。
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2015/11/08/LaTeX公式的使用教程/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -639,45 +302,18 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="这是一个一号标题"><a href="#这是一个一号标题" class="headerlink" title="这是一个一号标题"></a>这是一个一号标题</h1><h2 id="这是一个二号标题"><a href="#这是一个二号标题" class="headerlink" title="这是一个二号标题"></a>这是一个二号标题</h2><h3 id="这是一个三号标题"><a href="#这是一个三号标题" class="headerlink" title="这是一个三号标题"></a>这是一个三号标题</h3><h4 id="这是一个四好标题"><a href="#这是一个四好标题" class="headerlink" title="这是一个四好标题"></a>这是一个四好标题</h4><h5 id="这是一个五号标题"><a href="#这是一个五号标题" class="headerlink" title="这是一个五号标题"></a>这是一个五号标题</h5><h6 id="这是一个六号标题"><a href="#这是一个六号标题" class="headerlink" title="这是一个六号标题"></a>这是一个六号标题</h6><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 这是一个一号标题</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 这是一个二号标题</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 这是一个三号标题</span></span><br><span class="line"></span><br><span class="line"><span class="section">#### 这是一个四好标题</span></span><br><span class="line"></span><br><span class="line"><span class="section">##### 这是一个五号标题</span></span><br><span class="line"></span><br><span class="line"><span class="section">###### 这是一个六号标题</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>无序列表1</li>
-<li>无序列表2</li>
-<li>无序列表3</li>
-</ul>
-<ol>
-<li>有序列表1</li>
-<li>有序列表2</li>
-<li>有序列表3</li>
-</ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>无序列表1</span><br><span class="line"><span class="bullet">- </span>无序列表2</span><br><span class="line"><span class="bullet">- </span>无序列表3</span><br><span class="line"></span><br><span class="line"><span class="bullet">1. </span>有序列表1</span><br><span class="line"><span class="bullet">2. </span>有序列表2</span><br><span class="line"><span class="bullet">3. </span>有序列表3</span><br></pre></td></tr></table></figure>
-<p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a><br><img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg" alt="笔记"></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">baidu</span>](<span class="link">http://www.baidu.com</span>)</span><br><span class="line">![<span class="string">笔记</span>](<span class="link">https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这是一个引用<br>要不再来一次<br>注意要保留一个空格</p>
-</blockquote>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 这是一个引用</span></span><br><span class="line"><span class="quote">&gt; 要不再来一次</span></span><br><span class="line"><span class="quote">&gt; 注意要保留一个空格</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>如果想让引用保留另起一段的格式，可用如下方式：<br>可以多加一行空格</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 这是一个引用</span></span><br><span class="line">&gt;</span><br><span class="line"><span class="quote">&gt; 要不再来一次</span></span><br><span class="line">&gt;</span><br><span class="line"><span class="quote">&gt; 注意要保留一个空格</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<blockquote>
-<p>这是一个引用</p>
-<p>要不再来一次</p>
-<p>注意要保留一个空格</p>
-<p><em>一个`</em>`为斜体*</p>
-</blockquote>
-<p><strong>两个`</strong>`为粗体**</p>
-<p><strong>注意：</strong> 要引用诸如*在文本中，可以使用<code>\</code>进行转义</p>
-<p>表格：<br>| Tables        | Are           | Cool  |<br>|:———————-:|:———————-|———-|<br>| col 3 is      | right-aligned | $1600 |<br>| col 2 is      | centered      |  $12 |<br>| zebra stripes | are neat      |   $1 |</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| Tables        | Are           | Cool  |</span><br><span class="line">|:---------------:|:---------------|-------|</span><br><span class="line">| col 3 is      | right-aligned | \$1600 |</span><br><span class="line">| col 2 is      | centered      |  \$12 |</span><br><span class="line">| zebra stripes | are neat      |   \$1 |</span><br></pre></td></tr></table></figure>
-<p>在文章中使用代码时，用<code>```代码名</code>表示，结束用<code>``` </code>,可在末尾增加代码名。</p>
-<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>注意两点：</p>
-<ol>
-<li>别乱加空格、空行</li>
-<li>一般不同类型的之间有一个空行</li>
-</ol>
-<p>官方规范地址：<a href="https://github.com/DavidAnson/markdownlint/blob/v0.7.0/doc/Rules.md" target="_blank" rel="noopener">mdRules</a></p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            介绍markdown基本语法与使用规范
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2015/11/07/markdown-tutorial/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -792,7 +428,10 @@ var themeMenus = {};
           <li class="clearfix">
 
             
-              <div class="widget-entry-summary" style="margin: 0;">
+              <div class="widget-entry-thumbnail">
+                <a href="/2016/03/15/数据挖掘导论/" title=""><img width="50" height="50" src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
             
 
               <h6 style="margin: 0;"><a href="/2016/03/15/数据挖掘导论/">数据挖掘导论</a></h6>
@@ -982,6 +621,21 @@ var themeMenus = {};
   </div>
 
   <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js" async=""></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
