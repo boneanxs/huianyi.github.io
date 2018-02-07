@@ -13,7 +13,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>关于 | KpLearner</title>
+  <title>c-笔记 | KpLearner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="安辉,KpLearner,Hui An" />
@@ -21,17 +21,18 @@
   
   
   
-  <meta name="description" content="尚待更新… 联系方式github:https://github.com/huianyiemail: anh131@126.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="https://huianyi.github.io/about/index.html">
+  <meta name="description" content="八进制表示方法：0… 十六进制表示方法：0x… printf中使用%0、%x、%#0、%#x、%#X来表示 八进制和十六进制（#x会输出0X） unsigned int 表示无负数的整数类型，包含了从0到65535 %u 表示unsigned int L/l 可以将一个较小的数以long形式存储 比如int a=23L，同样适用于八进制和十六进制 %ld 打印long类型，有些系统中int和lo">
+<meta name="keywords" content="笔记,C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C-笔记">
+<meta property="og:url" content="https://huianyi.github.io/2016/03/26/C-笔记/index.html">
 <meta property="og:site_name" content="KpLearner">
-<meta property="og:description" content="尚待更新… 联系方式github:https://github.com/huianyiemail: anh131@126.com">
+<meta property="og:description" content="八进制表示方法：0… 十六进制表示方法：0x… printf中使用%0、%x、%#0、%#x、%#X来表示 八进制和十六进制（#x会输出0X） unsigned int 表示无负数的整数类型，包含了从0到65535 %u 表示unsigned int L/l 可以将一个较小的数以long形式存储 比如int a=23L，同样适用于八进制和十六进制 %ld 打印long类型，有些系统中int和lo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-07T06:52:01.128Z">
+<meta property="og:updated_time" content="2018-02-07T07:28:13.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="尚待更新… 联系方式github:https://github.com/huianyiemail: anh131@126.com">
+<meta name="twitter:title" content="C-笔记">
+<meta name="twitter:description" content="八进制表示方法：0… 十六进制表示方法：0x… printf中使用%0、%x、%#0、%#x、%#X来表示 八进制和十六进制（#x会输出0X） unsigned int 表示无负数的整数类型，包含了从0到65535 %u 表示unsigned int L/l 可以将一个较小的数以long形式存储 比如int a=23L，同样适用于八进制和十六进制 %ld 打印long类型，有些系统中int和lo">
   
     <link rel="alternate" href="/atom.xml" title="KpLearner" type="application/atom+xml">
   
@@ -87,7 +88,7 @@ var themeMenus = {};
 </script>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
@@ -163,7 +164,7 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main"><article id="page-"  class="article article-type-page" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-C-笔记" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -171,7 +172,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      About
+      C-笔记
     </h1>
   
 
@@ -179,6 +180,10 @@ var themeMenus = {};
     
     <div class="article-meta">
       
+	Posted on <a href="/2016/03/26/C-笔记/" class="article-date">
+	  <time datetime="2016-03-26T08:17:00.000Z" itemprop="datePublished">三月 26, 2016</time>
+	</a>
+
       
 	<span id="busuanzi_container_page_pv">
 	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
@@ -187,14 +192,108 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>尚待更新…</p>
-<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><p>github:<a href="https://github.com/huianyi" target="_blank" rel="noopener">https://github.com/huianyi</a><br>email: anh131@126.com</p>
+        <ul>
+<li>八进制表示方法：0…</li>
+<li>十六进制表示方法：0x…</li>
+<li>printf中使用<code>%0</code>、<code>%x</code>、<code>%#0</code>、<code>%#x</code>、<code>%#X</code>来表示 八进制和十六进制（#x会输出0X）</li>
+<li><strong>unsigned int</strong> 表示无负数的整数类型，包含了从0到65535</li>
+<li><code>%u</code> 表示unsigned int</li>
+<li><code>L/l</code> 可以将一个较小的数以long形式存储 比如int a=23L，同样适用于八进制和十六进制</li>
+<li><code>%ld</code> 打印long类型，有些系统中int和long代表的字节数相同，故可以使用<code>%d</code>，但是也会出现不一样的情况</li>
+<li><code>%hd</code> 表示short</li>
+<li>C把一个字节定为char类型使用的位数</li>
+<li><code>%c</code>显示字符，注意<code>printf()</code>函数主要是显示方式而不是存储方式</li>
+<li>浮点常量可以省略纯小数部分或纯整数部分，但不能同时省略，也可以省略小数点或指数部分，但不能同时省略。注意：数字中间不能出现空格</li>
+<li>默认将浮点常量当做double精度型，但可以在常量后边增加<code>f/F</code>来表示float型，也可以加入<code>L/l</code>来表示long double</li>
+<li><code>%f</code>、<code>%e</code>、<code>%a</code>为浮点的表示</li>
+</ul>
+<h1 id="卷子问题整理"><a href="#卷子问题整理" class="headerlink" title="卷子问题整理"></a>卷子问题整理</h1><ul>
+<li>软件测试是为了发现错误而执行程序的过程，测试要以查找错误为中心，而不是为了演示软件的正确功能</li>
+<li>需求获取、需求分析、编写需求规格说明书、需求评审——需求分析阶段的工作</li>
+<li>软件的生命周期是指软件产品从提出、实现、使用维护到停止使用退役的过程</li>
+<li>软件的生命周期可以分为软件定义、软件开发与软件运行维护三个阶段，其中主要活动阶段是：可行性研究与计划阶段、需求分析、软件设计、软件实现、软件测试、运行与维护。</li>
+<li>数据库中内模式是物理模式，它给出了数据库物理存储结构与物理存取方法</li>
+<li>switch语句的执行总是遇到break才终止，否则顺序执行</li>
+<li>位运算符的相关知识</li>
+<li>数据字典的相关知识（是在需求分析阶段建立，在数据库设计过程中不断修改、充实和完善的）</li>
+<li>面向对象基本方法的基本概念有对象、类和实例、消息、继承与多态性</li>
+<li>宏定义只是做简单替换的一种方法</li>
+<li>文件是由数据序列组成，可以构成二进制文件或文本文件</li>
+<li>各变量类型的字节长度</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量类型</th>
+<th style="text-align:center">32位</th>
+<th style="text-align:center">64位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">大多数4，少数8</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">指针</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>循环队列是队列中的一种顺序存储结构</li>
+<li>数据库中的相关知识</li>
+<li>软件危机主要表现在：软件需求的增长得不到满足;软件开发成本和进度无法控制；软件质量难以保证；软件不可维护或维护程度非常低；软件成本不断提高；软件开发成产率的提高赶不上硬件的发展和应用需求的增长</li>
+<li>黑盒测试是对软件已经实现的功能是否满足要求进行的测试和验证，不考虑内部特性，只根据程序的需求和规格说明，检查程序的功能</li>
+<li>软件设计中使用的工具有：系统结构图（需求分析阶段）、PAD、程序流程图是在详细设计阶段用到的；数据流图（DFD）是在结构化分析方法中用到的</li>
+<li>程序模块化思想：把程序分成软噶相对独立、功能单一的模块以便重复使用和编码调试；采用自顶向下，逐步细化的设计方法。</li>
+<li><strong>运算符的优先级</strong></li>
+<li><strong>数组的定义方法</strong></li>
+<li>函数未说明类型的情况下，自动按照<code>int</code>类型处理</li>
+<li>在printf中使用%%来表示%号</li>
+<li>浮点数取模是无效的</li>
+<li>浮点数运算也可以使用关系运算符，但最好使用<code>&lt;</code> <code>&gt;</code>,不要使用<code>&lt;=</code> <code>&gt;=</code>,因为浮点数运算是不准确的</li>
+<li>算术运算符&gt;关系运算符&gt;赋值运算符</li>
+<li>预定义标识符可以作为用户标识符（define/main/printf/scanf）</li>
+</ul>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
       
             
       
@@ -229,221 +328,39 @@ var themeMenus = {};
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/Python-NoteBook/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Python_NoteBook
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/15/数据挖掘导论/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">数据挖掘导论</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 <!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷子问题整理"><span class="nav-number">1.</span> <span class="nav-text">卷子问题整理</span></a></li></ol>
+    
+    </div>
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/huianyi" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:anh131@126.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/02/07/新资本论笔记/">新资本论笔记</a></h6>
-              <span>二月 7, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2016/08/05/Python-NoteBook/" title=""><img width="50" height="50" src="https://github.com/huianyi/-markdown-png/blob/master/PythonPost.gif?raw=true" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2016/08/05/Python-NoteBook/">Python_NoteBook</a></h6>
-              <span>八月 5, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2016/03/26/C-笔记/">C-笔记</a></h6>
-              <span>三月 26, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2016/03/15/数据挖掘导论/" title=""><img width="50" height="50" src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/datamining.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2016/03/15/数据挖掘导论/">数据挖掘导论</a></h6>
-              <span>三月 15, 2016</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2015/11/08/LaTeX公式的使用教程/">LaTeX公式的使用教程</a></h6>
-              <span>十一月 8, 2015</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2015/11/07/markdown-tutorial/">markdown-tutorial</a></h6>
-              <span>十一月 7, 2015</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">4</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/笔记/" style="font-size: 20px;">笔记</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">
