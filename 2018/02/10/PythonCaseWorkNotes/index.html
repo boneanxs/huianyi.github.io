@@ -30,7 +30,7 @@
 <meta property="og:description" content="这篇笔记是根据Python练习册的练习总结，主要讲了一些常用的语法错误和在变成过程中出现的问题，希望自己在以后的使用过程中能够犯更少的错误，在python编程之路上取得更大的进步！！ 如果这篇文章可以帮助到大家，那就再好不过了！！ 持续更新中……">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/blogImgs/PythonCaseWorkNotes/Python%E7%BB%83%E4%B9%A0%E5%86%8C.png?raw=true">
-<meta property="og:updated_time" content="2018-02-11T01:32:19.407Z">
+<meta property="og:updated_time" content="2018-02-11T03:23:02.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PythonCaseWorkNotes">
 <meta name="twitter:description" content="这篇笔记是根据Python练习册的练习总结，主要讲了一些常用的语法错误和在变成过程中出现的问题，希望自己在以后的使用过程中能够犯更少的错误，在python编程之路上取得更大的进步！！ 如果这篇文章可以帮助到大家，那就再好不过了！！ 持续更新中……">
@@ -172,7 +172,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://github.com/huianyi/-markdown-png/blob/master/blogImgs/PythonCaseWorkNotes/Python%E7%BB%83%E4%B9%A0%E5%86%8C.png?raw=true" rel="gallery_cjdi4cdk00009r0gtae6l3lqm">
+      <a class="article-gallery-img fancybox" href="https://github.com/huianyi/-markdown-png/blob/master/blogImgs/PythonCaseWorkNotes/Python%E7%BB%83%E4%B9%A0%E5%86%8C.png?raw=true" rel="gallery_cjdi866bq000uywgtgdl3exx4">
         <img src="https://github.com/huianyi/-markdown-png/blob/master/blogImgs/PythonCaseWorkNotes/Python%E7%BB%83%E4%B9%A0%E5%86%8C.png?raw=true" itemprop="image">
       </a>
     
@@ -219,6 +219,12 @@ var themeMenus = {};
 <p>truetype() : Load a TrueType or OpenType font from a file or file-like object, and create a font object. This function loads a font object from the given file or file-like object, and creates a font object for a font of the given size.</p>
 </blockquote>
 <p><strong>注：</strong> 官方文档请见<a href="https://pillow.readthedocs.io/en/latest/" target="_blank" rel="noopener">这里</a>。</p>
+<h1 id="激活码生成器"><a href="#激活码生成器" class="headerlink" title="激活码生成器"></a>激活码生成器</h1><h2 id="代码及解释-1"><a href="#代码及解释-1" class="headerlink" title="代码及解释"></a>代码及解释</h2><p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isNumber</span><span class="params">(rawStr)</span>:</span></span><br><span class="line">    pat = re.compile(<span class="string">'^\d+$'</span>)</span><br><span class="line">    <span class="keyword">if</span> pat.match(rawStr) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    num = <span class="string">''</span></span><br><span class="line">    <span class="keyword">while</span> isNumber(num) == <span class="number">0</span>:</span><br><span class="line">        num = input(<span class="string">'Please input the number of codes you need:'</span>)</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    digit = <span class="string">''</span></span><br><span class="line">    <span class="keyword">while</span> isNumber(digit) == <span class="number">0</span>:</span><br><span class="line">        digit = input(<span class="string">'Please input your activation code digits:'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(int(num)):</span><br><span class="line">        result = random.sample(string.ascii_letters + string.digits,int(digit))</span><br><span class="line">        print(<span class="string">'the result is '</span> + <span class="string">''</span>.join(result))</span><br></pre></td></tr></table></figure>
+<p>这个问题同样十分简单，首先是检测完整性输入情况，接着使用<code>random类</code>的<code>sample()</code>方法获得结果，输出即可。</p>
+<h2 id="遇到的问题和解决方案-1"><a href="#遇到的问题和解决方案-1" class="headerlink" title="遇到的问题和解决方案"></a>遇到的问题和解决方案</h2><ol>
+<li>还可以使用uuid类来生成激活码（充分显示了Python的强大）</li>
+</ol>
 
       
     </div>
@@ -284,7 +290,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片角标添加"><span class="nav-number">1.</span> <span class="nav-text">图片角标添加</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码及解释"><span class="nav-number">1.1.</span> <span class="nav-text">代码及解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题和解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">遇到的问题和解决方案</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片角标添加"><span class="nav-number">1.</span> <span class="nav-text">图片角标添加</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码及解释"><span class="nav-number">1.1.</span> <span class="nav-text">代码及解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题和解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">遇到的问题和解决方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#激活码生成器"><span class="nav-number">2.</span> <span class="nav-text">激活码生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码及解释-1"><span class="nav-number">2.1.</span> <span class="nav-text">代码及解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题和解决方案-1"><span class="nav-number">2.2.</span> <span class="nav-text">遇到的问题和解决方案</span></a></li></ol></li></ol>
     
     </div>
   </aside>
