@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%B8%80.png?raw=true">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%BA%8C.png?raw=true">
-<meta property="og:updated_time" content="2018-03-14T10:26:32.059Z">
+<meta property="og:updated_time" content="2018-03-14T11:03:48.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zero">
 <meta name="twitter:description" content="AlphaGo Zero - 为何可以工作和如何工作作者：Tim Wheeler,PhD Candidate@StanfordDepartment of Aeronautics and stronauticsAutomotive AIwheelert@stanford.edu综述在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的A">
@@ -246,7 +246,9 @@ var themeMenus = {};
 <p>搜索树新一轮迭代情况如下：</p>
 <p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%BA%8C.png?raw=true" alt="another iteration"></p>
 <p>Alpha Zero算法的核心亮点是预测神经网络是可以提高的，通过蒙特卡洛树搜索的结果可以作为训练集。神经网络的策略部分通过训练对于状态$s_0$的预测可能性值$p$来匹配从状态$s_0$下的蒙特卡洛树搜索中获得的提升可能性值$\pi$来得到提高。通过蒙特卡洛树搜索，提高后的策略预测值$p$为：</p>
-<script type="math/tex; mode=display">\pi{_i}=N_{i}^{1/\tau}</script>
+<script type="math/tex; mode=display">\pi{_i}=N_{i}^{1/\tau}</script><p>对于连续值$\tau$，其越接近于0则使得策略选择根据蒙特卡洛树搜索评估得到的最好行动。</p>
+<p>神经网络的值估计部分通过训练预测值来匹配最终的游戏结果，Z。他们的损失函数为：</p>
+<script type="math/tex; mode=display">(W-Z)^2+\pi{^T}lnp+\lambda\begin{Vmatrix}\theta\end{Vmatrix}</script>
       
     </div>
     <footer class="entry-meta entry-footer">
