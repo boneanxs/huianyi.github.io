@@ -30,7 +30,7 @@
 <meta property="og:description" content="该文章为Alpha Zero - How and Why it Works的翻译文章，原作作者是Tim Wheeler，一位斯坦福大学的大佬，原文地址可以点击这里。 翻译的时候还是有很多把握不对的地方，还望各位大佬评论区轻拍。 另外，本文只是笼统的介绍了AlphaGo Zero，至于具体的细节不是十分完整，适合仅了解的同学看一看，至于详细内容，还是下下来原汁原味的paper一饱眼福吧！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true">
-<meta property="og:updated_time" content="2018-03-14T12:26:38.099Z">
+<meta property="og:updated_time" content="2018-03-14T12:30:00.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AlphaGo Zero - 为何可以工作和如何工作(翻)">
 <meta name="twitter:description" content="该文章为Alpha Zero - How and Why it Works的翻译文章，原作作者是Tim Wheeler，一位斯坦福大学的大佬，原文地址可以点击这里。 翻译的时候还是有很多把握不对的地方，还望各位大佬评论区轻拍。 另外，本文只是笼统的介绍了AlphaGo Zero，至于具体的细节不是十分完整，适合仅了解的同学看一看，至于详细内容，还是下下来原汁原味的paper一饱眼福吧！">
@@ -172,7 +172,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true" rel="gallery_cjer28dwl0000k4gts8oalhsy">
+      <a class="article-gallery-img fancybox" href="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true" rel="gallery_cjer2ezew00006wgtk0yn6dca">
         <img src="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true" itemprop="image">
       </a>
     
@@ -206,7 +206,8 @@ var themeMenus = {};
       
         <p>该文章为Alpha Zero - How and Why it Works的翻译文章，原作作者是Tim Wheeler，一位斯坦福大学的大佬，原文地址可以<a href="http://tim.hibal.org/blog/alpha-zero-how-and-why-it-works/" target="_blank" rel="noopener">点击这里</a>。</p>
 <p>翻译的时候还是有很多把握不对的地方，还望各位大佬评论区轻拍。</p>
-<p>另外，本文只是笼统的介绍了AlphaGo Zero，至于具体的细节不是十分完整，适合仅了解的同学看一看，至于详细内容，还是下下来原汁原味的paper一饱眼福吧！<br><a id="more"></a></p>
+<p>另外，本文只是笼统的介绍了AlphaGo Zero，至于具体的细节不是十分完整，适合仅了解的同学看一看，至于详细内容，还是下下来原汁原味的paper一饱眼福吧！</p>
+<a id="more"></a>
 <h1 id="AlphaGo-Zero-为何可以工作和如何工作"><a href="#AlphaGo-Zero-为何可以工作和如何工作" class="headerlink" title="AlphaGo Zero - 为何可以工作和如何工作"></a>AlphaGo Zero - 为何可以工作和如何工作</h1><h4 id="作者：Tim-Wheeler-PhD-Candidate-Stanford"><a href="#作者：Tim-Wheeler-PhD-Candidate-Stanford" class="headerlink" title="作者：Tim Wheeler,PhD Candidate@Stanford"></a>作者：Tim Wheeler,PhD Candidate@Stanford</h4><h4 id="Department-of-Aeronautics-and-stronauticsAutomotive-AI"><a href="#Department-of-Aeronautics-and-stronauticsAutomotive-AI" class="headerlink" title="Department of Aeronautics and stronauticsAutomotive AI"></a>Department of Aeronautics and stronauticsAutomotive AI</h4><h4 id="wheelert-stanford-edu"><a href="#wheelert-stanford-edu" class="headerlink" title="wheelert@stanford.edu"></a>wheelert@stanford.edu</h4><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的AI。当时该版本的AlphaGo——AlphaGo Lee，使用了大量围棋高手的棋谱来作为训练集。然而，最近一篇新的文章向我们介绍了新的神经网络——AlphaGo Zero，它并不需要人类来指导它如何下围棋(并不需要人类棋谱)。AlphaGo Zero不仅仅比所有的围棋棋手或机器下的好，更令人震惊的是，它只需要三天的训练时间。本文接下来将会为你解释它为何可以工作和它如何进行工作的。</p>
 <h2 id="蒙特卡洛树搜索"><a href="#蒙特卡洛树搜索" class="headerlink" title="蒙特卡洛树搜索"></a>蒙特卡洛树搜索</h2><p>让机器在离散、确定性游戏中获取完美信息的首选算法是蒙特卡洛树搜索(MCTS)。一个机器在下像围棋、象棋、棋盘格类游戏时，它会尝试所有位置，并猜测对手的所有应对结果，再考虑自己的应对…如此循环往复。对于像围棋这样的游戏来说，求解域的增长十分迅速。蒙特卡洛树搜索将会基于该位置有多好来进行选择性尝试，因此它只会聚焦于最有可能发生的那一结果。</p>
 <p><img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%80.jpg" alt="游戏解释"></p>
