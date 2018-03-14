@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%B8%80.png?raw=true">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%BA%8C.png?raw=true">
-<meta property="og:updated_time" content="2018-03-14T11:03:48.516Z">
+<meta property="og:updated_time" content="2018-03-14T12:07:45.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zero">
 <meta name="twitter:description" content="AlphaGo Zero - 为何可以工作和如何工作作者：Tim Wheeler,PhD Candidate@StanfordDepartment of Aeronautics and stronauticsAutomotive AIwheelert@stanford.edu综述在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的A">
@@ -248,7 +248,11 @@ var themeMenus = {};
 <p>Alpha Zero算法的核心亮点是预测神经网络是可以提高的，通过蒙特卡洛树搜索的结果可以作为训练集。神经网络的策略部分通过训练对于状态$s_0$的预测可能性值$p$来匹配从状态$s_0$下的蒙特卡洛树搜索中获得的提升可能性值$\pi$来得到提高。通过蒙特卡洛树搜索，提高后的策略预测值$p$为：</p>
 <script type="math/tex; mode=display">\pi{_i}=N_{i}^{1/\tau}</script><p>对于连续值$\tau$，其越接近于0则使得策略选择根据蒙特卡洛树搜索评估得到的最好行动。</p>
 <p>神经网络的值估计部分通过训练预测值来匹配最终的游戏结果，Z。他们的损失函数为：</p>
-<script type="math/tex; mode=display">(W-Z)^2+\pi{^T}lnp+\lambda\begin{Vmatrix}\theta\end{Vmatrix}</script>
+<script type="math/tex; mode=display">(W-Z)^2+\pi{^T}lnp+\lambda\begin{Vmatrix}\theta\end{Vmatrix}^2_2</script><p>其中$(W-Z)^2$是损失值，$\pi{^T}lnp$是策略损失值，$\lambda\begin{Vmatrix}\theta\end{Vmatrix}^2_2$是额外的正则化部分，其中$\lambda\ge 0$,$\theta$表示神经网络中的参数。</p>
+<p>训练完全通过自我对抗得到。机器首先在随机网络参数$\theta$下开始生成。接着神经网络在不断自我博弈中使用。在每一次游戏中，对于每一步行动，都会通过蒙特卡洛树搜索计算$\pi$。Z由游戏最终的输出结果决定。参数$\theta$将会通过随机选择状态下的运行结果的损失函数的梯度下降得到提高。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上就是所有了。DeepMind的小伙伴们贡献出了仅仅通过自我博弈进行训练就可以稳定运行的简洁算法。虽然现在Zero算法仅仅在离散游戏中使用，但未来它是否可以扩展到MDP(或者是其中某些部分)将会是十分有趣的。</p>
+<p>AI的发展是令人震惊的，那些认为机器霸主很快将出现的人应当知道：这些AI在超越人类进入“超人领域”之前，最多只是人类水平而已。我们永远也不应该停下脚步。</p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -307,7 +311,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AlphaGo-Zero-为何可以工作和如何工作"><span class="nav-number">1.</span> <span class="nav-text">AlphaGo Zero - 为何可以工作和如何工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作者：Tim-Wheeler-PhD-Candidate-Stanford"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">作者：Tim Wheeler,PhD Candidate@Stanford</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Department-of-Aeronautics-and-stronauticsAutomotive-AI"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Department of Aeronautics and stronauticsAutomotive AI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wheelert-stanford-edu"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">wheelert@stanford.edu</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛树搜索"><span class="nav-number">1.2.</span> <span class="nav-text">蒙特卡洛树搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#专家策略提高效率"><span class="nav-number">1.3.</span> <span class="nav-text">专家策略提高效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#值估计来提高效率"><span class="nav-number">1.4.</span> <span class="nav-text">值估计来提高效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alpha-Zero神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">Alpha Zero神经网络</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AlphaGo-Zero-为何可以工作和如何工作"><span class="nav-number">1.</span> <span class="nav-text">AlphaGo Zero - 为何可以工作和如何工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作者：Tim-Wheeler-PhD-Candidate-Stanford"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">作者：Tim Wheeler,PhD Candidate@Stanford</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Department-of-Aeronautics-and-stronauticsAutomotive-AI"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Department of Aeronautics and stronauticsAutomotive AI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wheelert-stanford-edu"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">wheelert@stanford.edu</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛树搜索"><span class="nav-number">1.2.</span> <span class="nav-text">蒙特卡洛树搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#专家策略提高效率"><span class="nav-number">1.3.</span> <span class="nav-text">专家策略提高效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#值估计来提高效率"><span class="nav-number">1.4.</span> <span class="nav-text">值估计来提高效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alpha-Zero神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">Alpha Zero神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">1.6.</span> <span class="nav-text">结语</span></a></li></ol></li></ol>
     
     </div>
   </aside>
