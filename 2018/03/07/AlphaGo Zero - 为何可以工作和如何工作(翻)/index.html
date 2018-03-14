@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>zero | KpLearner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="安辉,KpLearner,Hui An" />
+  
+  
+  
+  
+  <meta name="description" content="AlphaGo Zero - 为何可以工作和如何工作作者：Tim Wheeler,PhD Candidate@StanfordDepartment of Aeronautics and stronauticsAutomotive AIwheelert@stanford.edu综述在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zero">
+<meta property="og:url" content="https://huianyi.github.io/2018/03/07/AlphaGo Zero - 为何可以工作和如何工作(翻)/index.html">
+<meta property="og:site_name" content="KpLearner">
+<meta property="og:description" content="AlphaGo Zero - 为何可以工作和如何工作作者：Tim Wheeler,PhD Candidate@StanfordDepartment of Aeronautics and stronauticsAutomotive AIwheelert@stanford.edu综述在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的A">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%80.jpg">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%BA%8C.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%89.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%9B%9B.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%BA%94.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%85%AD.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%83.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%85%AB.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B9%9D.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true">
+<meta property="og:updated_time" content="2018-03-14T05:40:25.891Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Zero">
+<meta name="twitter:description" content="AlphaGo Zero - 为何可以工作和如何工作作者：Tim Wheeler,PhD Candidate@StanfordDepartment of Aeronautics and stronauticsAutomotive AIwheelert@stanford.edu综述在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的A">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/huianyi/-markdown-png/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%80.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="KpLearner" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "",
+          enable_page_level_ads: true
+      });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="KpLearner" rel="home"> KpLearner </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-AlphaGo Zero - 为何可以工作和如何工作(翻)" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Zero
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/03/07/AlphaGo Zero - 为何可以工作和如何工作(翻)/" class="article-date">
+	  <time datetime="2018-03-07T07:08:43.000Z" itemprop="datePublished">三月 7, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AlphaGo-Zero-为何可以工作和如何工作"><a href="#AlphaGo-Zero-为何可以工作和如何工作" class="headerlink" title="AlphaGo Zero - 为何可以工作和如何工作"></a>AlphaGo Zero - 为何可以工作和如何工作</h1><h4 id="作者：Tim-Wheeler-PhD-Candidate-Stanford"><a href="#作者：Tim-Wheeler-PhD-Candidate-Stanford" class="headerlink" title="作者：Tim Wheeler,PhD Candidate@Stanford"></a>作者：Tim Wheeler,PhD Candidate@Stanford</h4><h4 id="Department-of-Aeronautics-and-stronauticsAutomotive-AI"><a href="#Department-of-Aeronautics-and-stronauticsAutomotive-AI" class="headerlink" title="Department of Aeronautics and stronauticsAutomotive AI"></a>Department of Aeronautics and stronauticsAutomotive AI</h4><h4 id="wheelert-stanford-edu"><a href="#wheelert-stanford-edu" class="headerlink" title="wheelert@stanford.edu"></a>wheelert@stanford.edu</h4><h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的AI。当时该版本的AlphaGo——AlphaGo Lee，使用了大量围棋高手的棋谱来作为训练集。然而，最近一篇新的文章向我们介绍了新的神经网络——AlphaGo Zero，它并不需要人类来指导它如何下围棋(并不需要人类棋谱)。AlphaGo Zero不仅仅比所有的围棋棋手或机器下的好，更令人震惊的是，它只需要三天的训练时间。本文接下来将会为你解释它为何可以工作和它如何进行工作的。</p>
+<h2 id="蒙特卡洛树搜索"><a href="#蒙特卡洛树搜索" class="headerlink" title="蒙特卡洛树搜索"></a>蒙特卡洛树搜索</h2><p>让机器在离散、确定性游戏中获取完美信息的首选算法是蒙特卡洛树搜索(MCTS)。一个机器在下像围棋、象棋、棋盘格类游戏时，它会尝试所有位置，并猜测对手的所有应对结果，再考虑自己的应对…如此循环往复。对于像围棋这样的游戏来说，求解域的增长十分迅速。蒙特卡洛树搜索将会基于该位置有多好来进行选择性尝试，因此它只会聚焦于最有可能发生的那一结果。</p>
+<p><img src="https://raw.githubusercontent.com/huianyi/-markdown-png/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%80.jpg" alt="游戏解释"></p>
+<p>从更技术的角度来讲，该算法思路如下：当前游戏进程状态为初始状态<code>s0</code>，并且假设现在到机器走下一步了。机器可以从行动集<code>A</code>中进行选择下一步，蒙特卡洛树搜索从一棵只有一个节点<code>s0</code>的树开始。这个节点通过尝试每个$a\in A$来进行子节点的扩展，如下是一字棋的蒙特卡洛树实例：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%BA%8C.png?raw=true" alt="tic-tac-toe"></p>
+<p>每一个子节点的价值都将会在接下来的步骤中决定，该价值是通过对当前子节点状态进行随机落子直至胜局、平局或败局的出现，胜局加一分，败局减一分，平局为0.</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%89.png?raw=true" alt="s01 value的确定"></p>
+<p>如上图所示，是<code>s0</code>子节点1的随机运行结果，该结果致使子节点1的价值为1。这个价值并不是代表着优解，因为该价值会随着随机运行过程而进行变化。一个机器运行是可以非智能的，每一步落子随机。但机器也可以通过更好的策略（虽然这个策略也是随机的）或者通过直接估计当前运行的价值来运行的更好。下面我们就来介绍这种情况。</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%9B%9B.png?raw=true" alt="expanded tree with approximate values"></p>
+<p>上图是我们给每个子节点通过估计值所得到的扩展树。值得注意的是我们新增了两种属性值：累计值<code>W</code>和该结果被访问到的次数<code>N</code>。由上可知，我们仅访问每个节点一次。</p>
+<p>从子节点上得到的信息通过汇总来表示父节点的值：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%BA%94.png?raw=true" alt="parents values"></p>
+<p>蒙特卡洛树搜索通过选择节点、扩展该节点、收集更新该节点信息来完成多次迭代。蒙特卡洛树搜索并不会扩展所有的叶子节点，因为这样的花销是巨大的。相反，选择节点过程往往是在那些有很高估计价值和相对未经过开发————即访问次数少之间取得平衡。</p>
+<p>叶子节点的选择是从根向下遍历，然后找到有着最高upper confidence tree(UCT)分数的子节点<code>i</code>：</p>
+<script type="math/tex; mode=display">U_i=\frac{W_i}{N_i}+c\sqrt{\frac{lnN_p}{N_i}}</script><p>$W_i$是子节点<code>i</code>的累计值，$N_i$是子节点<code>i</code>的访问次数,$N_p$是其父节点的访问次数。而参数$c$则控制着选择最高估计值(c小的时候)和未开发值(c高的时候)之间的平衡。它通常是由经验决定的。</p>
+<p>在$c=1$时，一字棋的UCT分数如下：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%85%AD.png?raw=true" alt="UCT score"></p>
+<p>如上所示，我们将会选择$s_{0,1}$，该节点将会被扩展和更新：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B8%83.png?raw=true" alt="s0,1 expanded"></p>
+<p>可以观察到，每个累计值<code>W</code>都反映着X的输赢。在选择过程中，我们将会持续跟踪它是X落子还是O落子，如果是O落子，那么<code>W</code>的值与上图相反。</p>
+<p>蒙特卡洛树将会一直迭代直到规定的时间结束。树逐渐扩展，我们将在这些所有可以落子的方式中选择最佳方式。机器将会在实际过程中选择具有最高访问次数的节点情况去落子。比如，如果我们最终结果如下：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%85%AB.png?raw=true" alt="expanded tree result"></p>
+<p>那么机器就会选择$s_{0,1}$进行下一步行动</p>
+<h2 id="专家策略提高效率"><a href="#专家策略提高效率" class="headerlink" title="专家策略提高效率"></a>专家策略提高效率</h2><p>像象棋和围棋这样的游戏有很大的分支。在一个确定的游戏状态下，我们会有很多可以落子的情况，而这导致我们很难充分的探知未来游戏状态。事实上，象棋大概有$10^{46}$中可能结果，而围棋在通常$19\times 19$的情况下有大概$10^{171}$种可能(一字棋仅5478种可能)</p>
+<p>仅仅通过普通的蒙特卡洛树搜索不足以有效评估落子情况。我们需要一种方法来(让搜索)更关注值得走的落子情况</p>
+<p>假设我们有一个专家策略$\pi$，对于当前给定状态，它可以告诉我们有多大可能性专家水准的棋手会走这一步。对于一字棋来说，结果可能如下：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B9%9D.png?raw=true" alt="tic-tac-tow with expert policy"></p>
+<p>其中$P_i = \pi(a_i|s_0)$，表明在状态$s_0$的情况下有多大可能选择行动$a_i$。</p>
+<p>如果在专家策略足够可靠的情况下，那么我们就可以制造出十分强大的机器，直接通过专家策略值来进行下一步落子。然而，得到专家策略十分困难，另一方面，证明该策略足够可靠也不容易。</p>
+<p>幸运的是，我们可以通过修改过的蒙特卡洛树搜索(添加了专家策略)来提升速度。修改过的蒙特卡洛树将会根据专家策略存储每个节点访问可能性，然后该可能性将会用于在选择过程用于调整节点分数。DeepMind所用的The probabilistic upper confidence tree分数为：</p>
+<script type="math/tex; mode=display">U_i=\frac{W_i}{N_i}+cP_i\sqrt{lnN_p}{1+N_i}</script><p>在之前，分数是由最高估计值和最未开发之间权衡决定，而现在搜索则被专家策略引导，更偏向于专家策略认为好的的行动。如果专家策略足够好，那么蒙特卡洛树就会更有效地偏向于优的游戏状态。如果专家策略比较差，那么蒙特卡洛树搜索则会偏向于差的游戏状态。无论哪种情况，在迭代次数足够大(即树也不断扩展过程下)，节点的分数将会被胜率(即$W_i/N_i$)决定，和之前的公式一样。</p>
+<h2 id="值估计来提高效率"><a href="#值估计来提高效率" class="headerlink" title="值估计来提高效率"></a>值估计来提高效率</h2><p>通过避免昂贵并且潜在不精确的随机搜索是提升效率的另一类方法。一种是用之前提到的专家策略引导随机搜索，在策略很好的情况下，搜索会取得很好的结果。</p>
+<p>另一种方案是直接避免搜索，并且直接通过估计函数$\hat(W)(x)$估计当前状态值。该函数不经过随机落子估计，直接根据当前状态计算出一个介于-1到1之间的值。显然，如果$\hat(W)$能对实际状态值达到很好的估计，而且执行速度快于随机落子估计，那么在不影响结果的情况下执行时间将会大大节省。</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true" alt="$\hat(W)(S_0,1)=0.1$"></p>
+<p>值估计和专家策略的结合可以加速蒙特卡洛树搜索。但仍旧有一个问题存在————我们怎样得到值估计函数和专家策略？有没有相关算法存在？</p>
+<h2 id="Alpha-Zero神经网络"><a href="#Alpha-Zero神经网络" class="headerlink" title="Alpha Zero神经网络"></a>Alpha Zero神经网络</h2>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+        
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'huiblog';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/10/PythonCaseWorkNotes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">PythonCaseWorkNotes</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AlphaGo-Zero-为何可以工作和如何工作"><span class="nav-number">1.</span> <span class="nav-text">AlphaGo Zero - 为何可以工作和如何工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作者：Tim-Wheeler-PhD-Candidate-Stanford"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">作者：Tim Wheeler,PhD Candidate@Stanford</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Department-of-Aeronautics-and-stronauticsAutomotive-AI"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Department of Aeronautics and stronauticsAutomotive AI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wheelert-stanford-edu"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">wheelert@stanford.edu</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛树搜索"><span class="nav-number">1.2.</span> <span class="nav-text">蒙特卡洛树搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#专家策略提高效率"><span class="nav-number">1.3.</span> <span class="nav-text">专家策略提高效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#值估计来提高效率"><span class="nav-number">1.4.</span> <span class="nav-text">值估计来提高效率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alpha-Zero神经网络"><span class="nav-number">1.5.</span> <span class="nav-text">Alpha Zero神经网络</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 KpLearner All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
