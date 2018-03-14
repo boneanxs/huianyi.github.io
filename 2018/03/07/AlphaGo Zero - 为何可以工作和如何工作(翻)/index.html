@@ -38,7 +38,9 @@
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%85%AB.png?raw=true">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E4%B9%9D.png?raw=true">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true">
-<meta property="og:updated_time" content="2018-03-14T05:40:25.891Z">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%B8%80.png?raw=true">
+<meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%BA%8C.png?raw=true">
+<meta property="og:updated_time" content="2018-03-14T10:26:32.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zero">
 <meta name="twitter:description" content="AlphaGo Zero - 为何可以工作和如何工作作者：Tim Wheeler,PhD Candidate@StanfordDepartment of Aeronautics and stronauticsAutomotive AIwheelert@stanford.edu综述在2016年的3月，DeepMind的AlphaGo引起了世界的轰动，它成为了史上第一个在围棋上打败一位顶尖围棋高手的A">
@@ -235,9 +237,16 @@ var themeMenus = {};
 <script type="math/tex; mode=display">U_i=\frac{W_i}{N_i}+cP_i\sqrt{lnN_p}{1+N_i}</script><p>在之前，分数是由最高估计值和最未开发之间权衡决定，而现在搜索则被专家策略引导，更偏向于专家策略认为好的的行动。如果专家策略足够好，那么蒙特卡洛树就会更有效地偏向于优的游戏状态。如果专家策略比较差，那么蒙特卡洛树搜索则会偏向于差的游戏状态。无论哪种情况，在迭代次数足够大(即树也不断扩展过程下)，节点的分数将会被胜率(即$W_i/N_i$)决定，和之前的公式一样。</p>
 <h2 id="值估计来提高效率"><a href="#值估计来提高效率" class="headerlink" title="值估计来提高效率"></a>值估计来提高效率</h2><p>通过避免昂贵并且潜在不精确的随机搜索是提升效率的另一类方法。一种是用之前提到的专家策略引导随机搜索，在策略很好的情况下，搜索会取得很好的结果。</p>
 <p>另一种方案是直接避免搜索，并且直接通过估计函数$\hat(W)(x)$估计当前状态值。该函数不经过随机落子估计，直接根据当前状态计算出一个介于-1到1之间的值。显然，如果$\hat(W)$能对实际状态值达到很好的估计，而且执行速度快于随机落子估计，那么在不影响结果的情况下执行时间将会大大节省。</p>
-<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true" alt="$\hat(W)(S_0,1)=0.1$"></p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81.png?raw=true" alt="W&#39;s value"></p>
 <p>值估计和专家策略的结合可以加速蒙特卡洛树搜索。但仍旧有一个问题存在————我们怎样得到值估计函数和专家策略？有没有相关算法存在？</p>
-<h2 id="Alpha-Zero神经网络"><a href="#Alpha-Zero神经网络" class="headerlink" title="Alpha Zero神经网络"></a>Alpha Zero神经网络</h2>
+<h2 id="Alpha-Zero神经网络"><a href="#Alpha-Zero神经网络" class="headerlink" title="Alpha Zero神经网络"></a>Alpha Zero神经网络</h2><p>Alpha Zero算法通过加速蒙特卡洛树搜索不断相互对抗从而得到了越来越好的专家策略和值估计函数。专家函数$\pi$和值估计函数$\hat(W)$通过深度神经网络得到。事实上，为了提高效率，Alpha Zero仅用一个神经网络$f$通过对当前状态$s$分析来得到下一步可能值(即$\pi$)和值估计函数(即$\hat(W)$)。</p>
+<script type="math/tex; mode=display">f(s)\to [p,W]</script><p>叶子节点通过神经网络的值得到评估，进而进行扩展。每一个子节点都会被初始化为$N=0,W=0$，P值则通过神经网络得到估计。预测值也会赋给被扩展节点的值，并且该值最终将会记录在树中。</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%B8%80.png?raw=true" alt="Alpha Zero&#39;s tree"></p>
+<p>选择过程和更新过程并没有变化。简单的说，在更新过程中，父节点的访问次数是递增的，它的值也会根据$W$来增加。</p>
+<p>搜索树新一轮迭代情况如下：</p>
+<p><img src="https://github.com/huianyi/-markdown-png/blob/master/AlphaGo%20Zero%20images/%E5%9B%BE%E5%8D%81%E4%BA%8C.png?raw=true" alt="another iteration"></p>
+<p>Alpha Zero算法的核心亮点是预测神经网络是可以提高的，通过蒙特卡洛树搜索的结果可以作为训练集。神经网络的策略部分通过训练对于状态$s_0$的预测可能性值$p$来匹配从状态$s_0$下的蒙特卡洛树搜索中获得的提升可能性值$\pi$来得到提高。通过蒙特卡洛树搜索，提高后的策略预测值$p$为：</p>
+<script type="math/tex; mode=display">\pi{_i}=N_{i}^{1/\tau}</script>
       
     </div>
     <footer class="entry-meta entry-footer">
