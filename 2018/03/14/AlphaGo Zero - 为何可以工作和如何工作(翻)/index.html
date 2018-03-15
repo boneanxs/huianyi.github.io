@@ -30,7 +30,7 @@
 <meta property="og:description" content="该文章为Alpha Zero - How and Why it Works的翻译文章，原作作者是Tim Wheeler，一位斯坦福大学的大佬，原文地址可以点击这里。 翻译的时候还是有很多把握不对的地方，还望各位大佬评论区轻拍。 另外，本文只是笼统的介绍了AlphaGo Zero，至于具体的细节不是十分完整，适合仅了解的同学看一看，至于详细内容，还是下下来原汁原味的paper一饱眼福吧！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true">
-<meta property="og:updated_time" content="2018-03-14T12:30:00.009Z">
+<meta property="og:updated_time" content="2018-03-15T01:10:49.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AlphaGo Zero - 为何可以工作和如何工作(翻)">
 <meta name="twitter:description" content="该文章为Alpha Zero - How and Why it Works的翻译文章，原作作者是Tim Wheeler，一位斯坦福大学的大佬，原文地址可以点击这里。 翻译的时候还是有很多把握不对的地方，还望各位大佬评论区轻拍。 另外，本文只是笼统的介绍了AlphaGo Zero，至于具体的细节不是十分完整，适合仅了解的同学看一看，至于详细内容，还是下下来原汁原味的paper一饱眼福吧！">
@@ -172,7 +172,7 @@ var themeMenus = {};
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" href="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true" rel="gallery_cjer2ezew00006wgtk0yn6dca">
+      <a class="article-gallery-img fancybox" href="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true" rel="gallery_cjertj5hr0000e0gtpa7nh01n">
         <img src="https://github.com/huianyi/-markdown-png/blob/master/Blog%20Thumbnails/AlphaGo%20Zero.jpg?raw=true" itemprop="image">
       </a>
     
@@ -255,7 +255,7 @@ var themeMenus = {};
 <script type="math/tex; mode=display">(W-Z)^2+\pi{^T}lnp+\lambda\begin{Vmatrix}\theta\end{Vmatrix}^2_2</script><p>其中$(W-Z)^2$是损失值，$\pi{^T}lnp$是策略损失值，$\lambda\begin{Vmatrix}\theta\end{Vmatrix}^2_2$是额外的正则化部分，其中$\lambda\ge 0$,$\theta$表示神经网络中的参数。</p>
 <p>训练完全通过自我对抗得到。机器首先在随机网络参数$\theta$下开始生成。接着神经网络在不断自我博弈中使用。在每一次游戏中，对于每一步行动，都会通过蒙特卡洛树搜索计算$\pi$。Z由游戏最终的输出结果决定。参数$\theta$将会通过随机选择状态下的运行结果的损失函数的梯度下降得到提高。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上就是所有了。DeepMind的小伙伴们贡献出了仅仅通过自我博弈进行训练就可以稳定运行的简洁算法。虽然现在Zero算法仅仅在离散游戏中使用，但未来它是否可以扩展到MDP(或者是其中某些部分)将会是十分有趣的。</p>
-<p>AI的发展是令人震惊的，那些认为机器霸主很快将出现的人应当知道：这些AI在超越人类进入“超人领域”之前，最多只是人类水平而已。我们永远也不应该停下脚步。</p>
+<p>AI的发展是令人震惊的，那些认为机器霸主很快将出现的人应当知道：这些AI在超越人类进入“超人领域”之前，很可能在人类水准短暂停留。永远也不要回头看。</p>
 
       
     </div>
